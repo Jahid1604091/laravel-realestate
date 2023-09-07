@@ -43,6 +43,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/property/types', 'index')->name('property.types');
         Route::get('/property/types/add', 'add')->name('property.types.add');
         Route::post('/property/types/store', 'store')->name('property.types.store');
+        Route::get('/property/types/edit/{id}', 'edit')->name('property.types.edit');
+        Route::post('/property/types/update', 'update')->name('property.types.update');
+        Route::get('/property/types/delete/{id}', 'destroy')->name('property.types.delete');
     });
 });
 

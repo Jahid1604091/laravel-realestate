@@ -27,4 +27,23 @@ class PropertyTypeController extends Controller
         ]);
         return redirect()->route('property.types');
     }
+
+    public function edit($id){
+        $types = PropertyType::findOrFail($id);
+        return view('backend.property.edit',compact('types'));
+    }
+
+    public function update(Request $req){
+        $pid = $req->id;
+
+        PropertyType::findOrFail($pid)->update([
+            'type_name'=>$req->type_name,
+            'type_icon'=>$req->type_icon,
+        ]);
+        return redirect()->route('property.types');
+    }
+    public function destroy($id){
+        $types = PropertyType::findOrFail($id)->delete();
+        return redirect()->route('property.types');
+    }
 }
