@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+
+
 // Route::group(['middleware'=>'api'], function ($routes) {
 //     Route::post('login', [AuthController::class,'login']);
 // });
@@ -31,5 +33,15 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
-    Route::get('profile', 'profile');
+    Route::get('profile', 'profile')->middleware('restrictRole:user');
+    Route::get('users', 'users')->middleware('restrictRole:admin');
 });
+
+//public route
+// Route::post('/auth/login', [AuthController::class, 'login']);
+
+// Route::group(['middleware' => ['auth:sanctum']], function () {
+//     Route::post('/auth/register', [AuthController::class, 'register'])->middleware('restrictRole:user');
+//     Route::get('/users', [AuthController::class, 'show'])->middleware('restrictRole:admin');
+//     Route::put('/users/{id}', [AuthController::class, 'update'])->middleware('restrictRole:user');
+// });
