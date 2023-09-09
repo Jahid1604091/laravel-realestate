@@ -300,14 +300,15 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item nav-category">Docs</li>
+            <li class="nav-item nav-category">Roles & Permissions</li>
             <li class="nav-item">
-                <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank"
+                <a href="{{route('permissions.all')}}" target="_blank"
                     class="nav-link">
                     <i class="link-icon" data-feather="hash"></i>
-                    <span class="link-title">Documentation</span>
+                    <span class="link-title">All Permissions</span>
                 </a>
             </li>
+
         </ul>
     </div>
 </nav>

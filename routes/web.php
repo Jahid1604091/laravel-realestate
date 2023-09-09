@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\PropertyTypeController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/property/types/edit/{id}', 'edit')->name('property.types.edit');
         Route::post('/property/types/update', 'update')->name('property.types.update');
         Route::get('/property/types/delete/{id}', 'destroy')->name('property.types.delete');
+    });
+
+    Route::controller(RoleController::class)->group(function () {
+        Route::get('/permissions', 'index')->name('permissions.all');
+        Route::get('/permissions/add', 'add')->name('permissions.add');
+        Route::post('/permissions/store', 'store')->name('permissions.store');
+        Route::get('/permissions/edit/{id}', 'edit')->name('permissions.edit');
+        Route::post('/permissions/update', 'update')->name('permissions.update');
+        Route::get('/permissions/delete/{id}', 'destroy')->name('permissions.delete');
     });
 });
 
