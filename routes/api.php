@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +38,8 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('users', 'users')->middleware('restrictRole:admin');
 });
 
-//public route
-// Route::post('/auth/login', [AuthController::class, 'login']);
-
+Route::post('upload',[AdminController::class,'uploadBulkCSV'])->middleware('restrictRole:admin');
+Route::post('export',[AdminController::class,'exportCSV'])->middleware('restrictRole:admin');
 // Route::group(['middleware' => ['auth:sanctum']], function () {
 //     Route::post('/auth/register', [AuthController::class, 'register'])->middleware('restrictRole:user');
 //     Route::get('/users', [AuthController::class, 'show'])->middleware('restrictRole:admin');
